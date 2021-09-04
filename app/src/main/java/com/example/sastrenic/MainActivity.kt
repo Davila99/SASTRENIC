@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         if (usuario == "eliseo" && contraseña == "1234") {
             val intent = Intent(this, InicioActivity::class.java)
             startActivity(intent)
-        }
 
+        }
     }
 }
