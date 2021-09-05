@@ -50,7 +50,6 @@ class ClienteActivity : AppCompatActivity() {
                 val intent = Intent(this, NuevoClienteActivity::class.java)
                 intent.putExtra("cliente", cliente)
                 startActivity(intent)
-                //Error al moomento de editar, verificar las llamadas
             }
 
             R.id.delete_cliente -> {
