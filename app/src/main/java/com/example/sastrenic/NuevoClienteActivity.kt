@@ -14,7 +14,7 @@ class NuevoClienteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_nuevo_cliente)
 
         et_fecha_recepcion.setOnClickListener { showDatePickerDialog() }
-        et_fecha_entregua.setOnClickListener { showDatePickerDialog() }
+        et_fecha_entregua.setOnClickListener { showDatePickerDialog2() }
 
         var idCliente: Int? = null
 
@@ -85,14 +85,25 @@ class NuevoClienteActivity : AppCompatActivity() {
         }
     }
 
+
     private fun showDatePickerDialog() {
         val datePicker =
             DatePickerFragment { day, month, year -> onDateSelecter(day, month, year) }
-        datePicker.show(supportFragmentManager,"datePicker")
+        datePicker.show(supportFragmentManager, "datePicker")
+    }
+
+    private fun showDatePickerDialog2() {
+
+        val datePicker2 =
+            DatePickerFragment { day, month, year -> onDateSelecter2(day, month, year) }
+        datePicker2.show(supportFragmentManager, "datePicker")
     }
 
     fun onDateSelecter(day: Int, month: Int, year: Int) {
         et_fecha_recepcion.setText("$day/ $month/ $year")
+    }
+
+    fun onDateSelecter2(day: Int, month: Int, year: Int) {
         et_fecha_entregua.setText("$day/ $month/ $year")
     }
 

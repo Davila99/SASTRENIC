@@ -14,7 +14,7 @@ class ClienteAdapter(private val mContex: Context, private val listaCliente: Lis
         val layout = LayoutInflater.from(mContex).inflate(R.layout.cliente_list, parent, false)
         val cliente = listaCliente[position]
         layout.nombre.text = cliente.nombre
-        layout.cedula.text = cliente.cedula
+        layout.direccion.text =cliente.direccion
         layout.telefono.text = "${cliente.telefono}"
 
 
