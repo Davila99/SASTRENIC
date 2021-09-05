@@ -32,10 +32,10 @@ class InicioActivity : AppCompatActivity() {
 
         lista.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this, ClienteActivity::class.java)
-            intent.putExtra("id", listaclientes[position].idCliente )
+            intent.putExtra("id", listaclientes[position].idCliente)
             startActivity(intent)
         }
-        //esta nombre el la refecia de evento onclick en el boton guardar
+
         floatingActionButton.setOnClickListener {
             val intent = Intent(this, NuevoClienteActivity::class.java)
             startActivity(intent)

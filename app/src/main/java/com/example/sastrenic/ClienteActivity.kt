@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_cliente.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class ClienteActivity : AppCompatActivity() {
@@ -29,10 +28,19 @@ class ClienteActivity : AppCompatActivity() {
 
         clienteLiveData.observe(this, Observer {
             cliente = it
+            //En este apdater mostramos la lsita en segundo plano
 
             nombre_cliente.text = cliente.nombre
             cedula_cliente.text = cliente.cedula
-            telefono_cliente.text = cliente.cedula
+            direccion_cliente.text = cliente.direccion
+            telefono_cliente.text = "${cliente.telefono}"
+            fecha_recepcion_cliente.text = cliente.fecha_recepcion
+            fecha_entregua_cliente.text = cliente.fecha_entrega
+            descripcion_prenda_cliente.text= cliente.descripcion_prenda
+            cantidad_cliente.text = "${cliente.cantidad}"
+            precio_cliente.text = "${cliente.precio}"
+
+
 
         })
     }
@@ -53,7 +61,7 @@ class ClienteActivity : AppCompatActivity() {
             }
 
             R.id.delete_cliente -> {
-            clienteLiveData.removeObservers(this)
+                clienteLiveData.removeObservers(this)
                 CoroutineScope(Dispatchers.IO).launch {
                     database.clientes().delete(cliente)
 

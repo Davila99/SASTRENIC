@@ -13,6 +13,9 @@ class NuevoClienteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_cliente)
 
+        et_fecha_recepcion.setOnClickListener { showDatePickerDialog() }
+        et_fecha_entregua.setOnClickListener { showDatePickerDialog() }
+
         var idCliente: Int? = null
 
         if (intent.hasExtra("cliente")) {
@@ -81,4 +84,16 @@ class NuevoClienteActivity : AppCompatActivity() {
 
         }
     }
+
+    private fun showDatePickerDialog() {
+        val datePicker =
+            DatePickerFragment { day, month, year -> onDateSelecter(day, month, year) }
+        datePicker.show(supportFragmentManager,"datePicker")
+    }
+
+    fun onDateSelecter(day: Int, month: Int, year: Int) {
+        et_fecha_recepcion.setText("$day/ $month/ $year")
+        et_fecha_entregua.setText("$day/ $month/ $year")
+    }
+
 }
