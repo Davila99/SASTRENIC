@@ -21,8 +21,13 @@ class NuevoClienteActivity : AppCompatActivity() {
 
             et_nombre.setText(cliente.nombre)
             et_cedula.setText(cliente.cedula)
+            et_direccion.setText(cliente.direccion)
             et_telefono.setText(cliente.telefono.toString())
-            et_fecha.setText(cliente.fecha_recepcion)
+            et_fecha_recepcion.setText(cliente.fecha_recepcion)
+            et_fecha_entregua.setText(cliente.fecha_entrega)
+            et_descripcion.setText(cliente.descripcion_prenda)
+            et_cantidad.setText(cliente.cantidad.toString())
+            et_precio.setText(cliente.precio.toString())
             idCliente = cliente.idCliente
         }
 
@@ -32,10 +37,25 @@ class NuevoClienteActivity : AppCompatActivity() {
 
             val nombre = et_nombre.text.toString()
             val cedula = et_cedula.text.toString()
+            val direccion = et_direccion.text.toString()
             val telefono = et_telefono.text.toString().toInt()
-            val fecha = et_fecha.text.toString()
+            val fecha_recepcion = et_fecha_recepcion.text.toString()
+            val fecha_entrega = et_fecha_entregua.text.toString()
+            val descripcion = et_descripcion.text.toString()
+            val cantidad = et_cantidad.text.toString().toInt()
+            val precio = et_precio.text.toString().toDouble()
 
-            val cliente = Cliente(nombre, cedula, telefono, fecha)
+            val cliente = Cliente(
+                nombre,
+                cedula,
+                direccion,
+                telefono,
+                fecha_recepcion,
+                fecha_entrega,
+                descripcion,
+                cantidad,
+                precio
+            )
 
             if (idCliente != null) {
 
