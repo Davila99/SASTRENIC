@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startAplication(view: View) {
+
         var usuario = findViewById<EditText>(R.id.editUsuario).text.toString();
         var contraseña = findViewById<EditText>(R.id.editContraseña).text.toString();
         if (usuario == "eliseo" && contraseña == "1234") {

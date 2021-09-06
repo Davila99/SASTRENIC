@@ -9,9 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SASTRENIC">
-        <activity android:name=".NuevoClienteActivity"></activity>
-        <activity android:name=".ClienteActivity" />
-        <activity android:name=".InicioActivity" />
+        <activity
+            android:name=".NuevoClienteActivity"
+            android:parentActivityName=".ClienteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ClienteActivity" />
+        </activity>
+        <activity
+            android:name=".ClienteActivity"
+            android:parentActivityName=".InicioActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".InicioActivity" />
+        </activity>
+        <activity
+            android:name=".InicioActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
