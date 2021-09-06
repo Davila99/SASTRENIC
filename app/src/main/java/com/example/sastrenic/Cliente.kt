@@ -15,6 +15,7 @@ class Cliente(
     val descripcion_prenda: String,
     val cantidad: Int,
     val precio: Double,
+    val total:Double,
     @PrimaryKey(autoGenerate = true)
     var idCliente: Int = 0
 ) : Serializable

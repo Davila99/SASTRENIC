@@ -1,10 +1,13 @@
 package com.example.sastrenic
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_cliente.*
@@ -36,10 +39,10 @@ class ClienteActivity : AppCompatActivity() {
             telefono_cliente.text = "${cliente.telefono}"
             fecha_recepcion_cliente.text = cliente.fecha_recepcion
             fecha_entregua_cliente.text = cliente.fecha_entrega
-            descripcion_prenda_cliente.text= cliente.descripcion_prenda
+            descripcion_prenda_cliente.text = cliente.descripcion_prenda
             cantidad_cliente.text = "${cliente.cantidad}"
             precio_cliente.text = "${cliente.precio}"
-
+            total_cliente.text = "${cliente.total}"
 
 
         })
@@ -61,12 +64,25 @@ class ClienteActivity : AppCompatActivity() {
             }
 
             R.id.delete_cliente -> {
-                clienteLiveData.removeObservers(this)
-                CoroutineScope(Dispatchers.IO).launch {
-                    database.clientes().delete(cliente)
+                val aviso_eliminar = AlertDialog.Builder(this)
+                aviso_eliminar.setTitle("Estas seguro")
+                aviso_eliminar.setMessage("Deseas eliminar este registro")
+                aviso_eliminar.setPositiveButton(android.R.string.ok){
+                dialog,which -> Toast.makeText(this,
+                    "Registro eliminado",
+                    Toast.LENGTH_LONG).show()
+                    clienteLiveData.removeObservers(this)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        database.clientes().delete(cliente)
 
-                    this@ClienteActivity.finish()
+                        this@ClienteActivity.finish()
+
+                    }
                 }
+                aviso_eliminar.setNeutralButton("Calcelar",null)
+                aviso_eliminar.show()
+
+
             }
         }
 

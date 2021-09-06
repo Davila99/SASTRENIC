@@ -47,6 +47,7 @@ class NuevoClienteActivity : AppCompatActivity() {
             val descripcion = et_descripcion.text.toString()
             val cantidad = et_cantidad.text.toString().toInt()
             val precio = et_precio.text.toString().toDouble()
+            val total = cantidad * precio
 
             val cliente = Cliente(
                 nombre,
@@ -57,7 +58,8 @@ class NuevoClienteActivity : AppCompatActivity() {
                 fecha_entrega,
                 descripcion,
                 cantidad,
-                precio
+                precio,
+                total
             )
 
             if (idCliente != null) {
@@ -85,7 +87,7 @@ class NuevoClienteActivity : AppCompatActivity() {
         }
     }
 
-
+//Definicion de los metodos que nos permite mostrar los Dialog Picker
     private fun showDatePickerDialog() {
         val datePicker =
             DatePickerFragment { day, month, year -> onDateSelecter(day, month, year) }
