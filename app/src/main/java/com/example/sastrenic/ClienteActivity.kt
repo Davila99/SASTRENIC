@@ -67,10 +67,12 @@ class ClienteActivity : AppCompatActivity() {
                 val aviso_eliminar = AlertDialog.Builder(this)
                 aviso_eliminar.setTitle("Estas seguro")
                 aviso_eliminar.setMessage("Deseas eliminar este registro")
-                aviso_eliminar.setPositiveButton(android.R.string.ok){
-                dialog,which -> Toast.makeText(this,
-                    "Registro eliminado",
-                    Toast.LENGTH_LONG).show()
+                aviso_eliminar.setPositiveButton(android.R.string.ok) { dialog, which ->
+                    Toast.makeText(
+                        this,
+                        "Registro eliminado",
+                        Toast.LENGTH_LONG
+                    ).show()
                     clienteLiveData.removeObservers(this)
                     CoroutineScope(Dispatchers.IO).launch {
                         database.clientes().delete(cliente)
@@ -79,10 +81,8 @@ class ClienteActivity : AppCompatActivity() {
 
                     }
                 }
-                aviso_eliminar.setNeutralButton("Calcelar",null)
+                aviso_eliminar.setNeutralButton("Calcelar", null)
                 aviso_eliminar.show()
-
-
             }
         }
 

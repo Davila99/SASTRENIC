@@ -17,7 +17,6 @@ class ClienteAdapter(private val mContex: Context, private val listaCliente: Lis
         layout.direccion.text = cliente.direccion
         layout.telefono.text = "${cliente.telefono}"
 
-
         return layout
     }
 

@@ -29,7 +29,6 @@ class InicioActivity : AppCompatActivity() {
         })
 
 
-
         lista.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this, ClienteActivity::class.java)
             intent.putExtra("id", listaclientes[position].idCliente)

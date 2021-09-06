@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             val toast = Toast.makeText(this, "Bienvenido a SASTRENIC", Toast.LENGTH_LONG)
             toast.show()
 
-        }else{
+        } else {
             val toast = Toast.makeText(this, "Usuario o contraseña incorrecta", Toast.LENGTH_LONG)
             toast.show()
         }

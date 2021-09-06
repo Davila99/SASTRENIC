@@ -89,10 +89,8 @@ class NuevoClienteActivity : AppCompatActivity() {
                         this@NuevoClienteActivity.finish()
                     }
 
-
                 }
             }
-
 
         }
     }
