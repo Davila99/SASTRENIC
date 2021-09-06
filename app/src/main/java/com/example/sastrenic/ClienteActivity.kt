@@ -44,7 +44,6 @@ class ClienteActivity : AppCompatActivity() {
             precio_cliente.text = "${cliente.precio}"
             total_cliente.text = "${cliente.total}"
 
-
         })
     }
 
