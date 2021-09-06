@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,12 @@ class MainActivity : AppCompatActivity() {
         if (usuario == "eliseo" && contraseña == "1234") {
             val intent = Intent(this, InicioActivity::class.java)
             startActivity(intent)
+            val toast = Toast.makeText(this, "Bienvenido a SASTRENIC", Toast.LENGTH_LONG)
+            toast.show()
 
+        }else{
+            val toast = Toast.makeText(this, "Usuario o contraseña incorrecta", Toast.LENGTH_LONG)
+            toast.show()
         }
     }
 }

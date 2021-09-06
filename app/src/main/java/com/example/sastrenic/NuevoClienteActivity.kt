@@ -2,6 +2,7 @@ package com.example.sastrenic
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_nuevo_cliente.*
 import kotlinx.android.synthetic.main.cliente_list.*
 import kotlinx.coroutines.CoroutineScope
@@ -61,33 +62,42 @@ class NuevoClienteActivity : AppCompatActivity() {
                 precio,
                 total
             )
+            if (nombre.isEmpty() || cedula.isEmpty() || direccion.isEmpty() || telefono.toString()
+                    .isEmpty() || fecha_recepcion.isEmpty() || fecha_entrega.isEmpty() || descripcion.isEmpty() || cantidad.toString()
+                    .isEmpty() || precio.toString().isEmpty()
+            ) {
+                Toast.makeText(this, "Se requiere todos los campos", Toast.LENGTH_LONG).show()
 
-            if (idCliente != null) {
-
-                CoroutineScope(Dispatchers.IO).launch {
-
-                    cliente.idCliente = idCliente
-
-                    database.clientes().update(cliente)
-
-                    this@NuevoClienteActivity.finish()
-                }
             } else {
 
-                CoroutineScope(Dispatchers.IO).launch {
+                if (idCliente != null) {
 
-                    database.clientes().insertAll(cliente)
+                    CoroutineScope(Dispatchers.IO).launch {
 
-                    this@NuevoClienteActivity.finish()
+                        cliente.idCliente = idCliente
+
+                        database.clientes().update(cliente)
+
+                        this@NuevoClienteActivity.finish()
+                    }
+                } else {
+
+                    CoroutineScope(Dispatchers.IO).launch {
+
+                        database.clientes().insertAll(cliente)
+
+                        this@NuevoClienteActivity.finish()
+                    }
+
+
                 }
-
-
             }
+
 
         }
     }
 
-//Definicion de los metodos que nos permite mostrar los Dialog Picker
+
     private fun showDatePickerDialog() {
         val datePicker =
             DatePickerFragment { day, month, year -> onDateSelecter(day, month, year) }
